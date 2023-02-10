@@ -13,8 +13,17 @@
             <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
             <!-- Core theme CSS (includes Bootstrap)-->
             <link href="css/styles.css" rel="stylesheet" />
-            <link rel="stylesheet" type="text/css" href="styles/main_styles.css">
-            <link rel="stylesheet" type="text/css" href="styles/responsive.css">
+            <link rel="stylesheet" type="text/css" href="css/bootstrap-4.1.2/bootstrap.min.css">
+            <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+            <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+            <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+            <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
+            <link href="plugins/jquery-datepicker/jquery-ui.css" rel="stylesheet" type="text/css">
+            <link href="plugins/jquery-timepicker/jquery.timepicker.css" rel="stylesheet" type="text/css">
+            {{-- <link rel="stylesheet" type="text/css" href="css/menu.css"> --}}
+            {{-- <link rel="stylesheet" type="text/css" href="css/menu_responsive.css"> --}}
+            <link rel="stylesheet" type="text/css" href="css/main_styles.css">
+            <link rel="stylesheet" type="text/css" href="css/responsive.css">
         
 
         <!-- Fonts -->
@@ -35,7 +44,7 @@
         
 
         <!-- Header-->
-        <header class="" style="background-image: url('images/home.jpg'); height: 100vh; background-repeat: no-repeat;" >
+        {{-- <header class="" style="background-image: url('images/home.jpg'); height: 100vh; background-repeat: no-repeat;" >
             <div class="pt-5">
                 <!-- Navigation-->
 
@@ -75,15 +84,75 @@
             </nav>
             </div>
             
-         
-            <div class="px-4 px-lg-5 my-5 flex justify-content-center align-items-center">
-                <div class="text-white text-center">
-                    <h1 class="display-4 fw-bolder">Shop in style</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+        </header> --}}
+        <header class="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="header_content d-flex flex-row align-items-center justify-content-start">
+                            <div class="logo">
+                                <a href="#">
+                                    <div>The Venue</div>
+                                    <div>restaurant</div>
+                                </a>
+                            </div>
+                            <nav class="main_nav">
+                                <ul class="d-flex flex-row align-items-center justify-content-start">
+                                    <li class="nav-item"><a class="nav-link active text-white" aria-current="page" href="#!">Home</a></li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle text-white" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <li><a class="dropdown-item " href="#!">All Products</a></li>
+                                            <li><hr class="dropdown-divider " /></li>
+                                            <li><a class="dropdown-item " href="#!">Popular Items</a></li>
+                                            <li><a class="dropdown-item " href="#!">New Arrivals</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </nav>
+                            {{-- <div class="reservations_phone ml-auto">Reservations: +34 586 778 8892</div> --}}
+                            <div class="ml-auto flex">
+                                @if (Route::has('login'))
+                                    @auth
+                                    
+                                      <div class="border border-white"><a class="nav-link active text-black" href="{{ url('/dashboard') }}">Dashboard</a></div>
+                                    @else
+                                    <div class="border border-white me-3 btn btn-light"><a class="nav-link active text-black" href="{{ route('login') }}">Log in</a></div>
+                                        @if (Route::has('register'))
+                                        <div class="border border-white"><a class="nav-link active text-black" href="{{ route('register') }}">Register</a></div>  
+                                    
+                                        @endif
+                                        @endauth
+                                @endif
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
         </header>
+    
+        
+        <!-- Home -->
+    
+        <div class="home">
+            <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="images/home.jpg" data-speed="0.8"></div>
+            <div class="home_container">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="home_content text-center">
+                                <div class="home_subtitle page_subtitle">The Venue is</div>
+                                <div class="home_title"><h1>An Extraordinery Experience</h1></div>
+                                <div class="home_text ml-auto mr-auto">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll_icon"></div>
+        </div>
         
         <!-- Section-->
         <section class="py-5">
@@ -166,6 +235,20 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="css/bootstrap-4.1.2/popper.js"></script>
+        <script src="css/bootstrap-4.1.2/bootstrap.min.js"></script>
+        <script src="plugins/greensock/TweenMax.min.js"></script>
+        <script src="plugins/greensock/TimelineMax.min.js"></script>
+        <script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
+        <script src="plugins/greensock/animation.gsap.min.js"></script>
+        <script src="plugins/greensock/ScrollToPlugin.min.js"></script>
+        <script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+        <script src="plugins/easing/easing.js"></script>
+        <script src="plugins/parallax-js-master/parallax.min.js"></script>
+        <script src="plugins/jquery-datepicker/jquery-ui.js"></script>
+        <script src="plugins/jquery-timepicker/jquery.timepicker.js"></script>
+        <script src="js/menu.js"></script>
     </body>
 </html>
     </body>
