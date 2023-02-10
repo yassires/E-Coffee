@@ -11286,3 +11286,19 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.lg{
+    border: solid white;
+}
+.lg:hover{
+  transition: 0.3s;
+  background-color: white;
+}
+
+.lg1{
+  font-size: medium;
+  color: white;
+}
+.lg1:hover{
+
+  color: black;
+}

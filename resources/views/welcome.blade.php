@@ -43,48 +43,7 @@
     <body>
         
 
-        <!-- Header-->
-        {{-- <header class="" style="background-image: url('images/home.jpg'); height: 100vh; background-repeat: no-repeat;" >
-            <div class="pt-5">
-                <!-- Navigation-->
-
-                   <nav class="navbar navbar-expand-lg  ">
-                <div class="container px-4 px-lg-5">
-                    <a class="navbar-brand text-white" href="#!">E-Coffee</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                            <li class="nav-item"><a class="nav-link active text-white" aria-current="page" href="#!">Home</a></li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-white" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item " href="#!">All Products</a></li>
-                                    <li><hr class="dropdown-divider " /></li>
-                                    <li><a class="dropdown-item " href="#!">Popular Items</a></li>
-                                    <li><a class="dropdown-item " href="#!">New Arrivals</a></li>
-                                </ul>
-                            </li>
-                            <div class="flex justify-end">
-                            @if (Route::has('login'))
-                                @auth
-                                
-                                  <li><a class="nav-link active text-white" href="{{ url('/dashboard') }}">Dashboard</a></li>
-                                @else
-                                <li><a class="nav-link active text-white" href="{{ route('login') }}">Log in</a></li>
-                                    @if (Route::has('register'))
-                                    <li><a class="nav-link active text-white" href="{{ route('register') }}">Register</a></li>  
-                                
-                                    @endif
-                                    @endauth
-                            @endif
-                        </div>
-                        </ul>  
-                    </div>
-                </div>
-            </nav>
-            </div>
-            
-        </header> --}}
+       
         <header class="header">
             <div class="container">
                 <div class="row">
@@ -92,34 +51,20 @@
                         <div class="header_content d-flex flex-row align-items-center justify-content-start">
                             <div class="logo">
                                 <a href="#">
-                                    <div>The Venue</div>
-                                    <div>restaurant</div>
+                                    <div>E-Coffee</div>
+                                    <div>Coffee Shop</div>
                                 </a>
                             </div>
-                            <nav class="main_nav">
-                                <ul class="d-flex flex-row align-items-center justify-content-start">
-                                    <li class="nav-item"><a class="nav-link active text-white" aria-current="page" href="#!">Home</a></li>
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle text-white" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <li><a class="dropdown-item " href="#!">All Products</a></li>
-                                            <li><hr class="dropdown-divider " /></li>
-                                            <li><a class="dropdown-item " href="#!">Popular Items</a></li>
-                                            <li><a class="dropdown-item " href="#!">New Arrivals</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </nav>
                             {{-- <div class="reservations_phone ml-auto">Reservations: +34 586 778 8892</div> --}}
                             <div class="ml-auto flex">
                                 @if (Route::has('login'))
                                     @auth
                                     
-                                      <div class="border border-white"><a class="nav-link active text-black" href="{{ url('/dashboard') }}">Dashboard</a></div>
+                                      <div class="lg"><a class="nav-link active lg1" href="{{ url('/dashboard') }}">Dashboard</a></div>
                                     @else
-                                    <div class="border border-white me-3 btn btn-light"><a class="nav-link active text-black" href="{{ route('login') }}">Log in</a></div>
+                                    <div class="lg me-3 "><a class="nav-link active lg1" href="{{ route('login') }}">Log in</a></div>
                                         @if (Route::has('register'))
-                                        <div class="border border-white"><a class="nav-link active text-black" href="{{ route('register') }}">Register</a></div>  
+                                        <div class="lg"><a class="nav-link active lg1" href="{{ route('register') }}">Register</a></div>  
                                     
                                         @endif
                                         @endauth
@@ -141,7 +86,7 @@
                     <div class="row">
                         <div class="col">
                             <div class="home_content text-center">
-                                <div class="home_subtitle page_subtitle">The Venue is</div>
+                                <div class="home_subtitle page_subtitle">E-Coffee is</div>
                                 <div class="home_title"><h1>An Extraordinery Experience</h1></div>
                                 <div class="home_text ml-auto mr-auto">
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus.</p>
@@ -158,74 +103,45 @@
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                    @foreach ($data as $dt)
                     <div class="col mb-5">
-                        <div class="card h-100">
+                        <div class="card">
                             <!-- Product image-->
-                            <img class="card-img-top" height="200" src="images/mocha.jpg" alt="..." />
+                            <img class="card-img-top"  height="200" src="images/mocha.jpg" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">Fancy Product</h5>
+                                    <h5 class="fw-bolder">{{ $dt->title }}</h5>
+                                    @if ($dt->price >25)
+                                        <div class="d-flex justify-content-center small text-warning mb-2">
+                                            <div class="bi-star-fill"></div>
+                                            <div class="bi-star-fill"></div>
+                                            <div class="bi-star-fill"></div>
+                                            <div class="bi-star-fill"></div>
+                                            <div class="bi-star-fill"></div>
+                                        </div>
+                                        <span class="text-muted text-decoration-line-through">{{ $dt->price +20}}</span>
+                                    @endif
+                                    
                                     <!-- Product price-->
-                                    $40.00 - $80.00
-                                </div>
-                            </div>
-                           
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Sale badge-->
-                            <!-- Product image-->
-                            <img class="card-img-top" height="200" src="images/Cappuccino.jpg" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Special Item</h5>
-                                    <!-- Product reviews-->
-                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
+                                    ${{ $dt->price }}
+                                    <div>
+                                        {{ $dt->description }}
                                     </div>
-                                    <!-- Product price-->
-                                    <span class="text-muted text-decoration-line-through">$20.00</span>
-                                    $18.00
+                                    
                                 </div>
                             </div>
-                           
+                           @endforeach
                         </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Sale badge-->
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-                            <!-- Product image-->
-                            <img class="card-img-top" height="200" src="images/Iced-Vanilla-Latte.jpg" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Sale Item</h5>
-                                    <!-- Product price-->
-                                    <span class="text-muted text-decoration-line-through">$50.00</span>
-                                    $25.00
-                                </div>
-                            </div>
-                           
-                        </div>
+                    
+
                     </div>
                     
-                    
-                    
-                   
-                    
+                    </div> 
                 </div>
             </div>
+            
         </section>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
