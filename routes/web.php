@@ -31,6 +31,6 @@ Route::middleware([
 Route::get('/dashboard', [ProductController::class, 'index'])->name('dashboard');
 Route::get('add', [ProductController::class, 'create']);
 Route::post('save', [ProductController::class, 'store'])->name('save');
-Route::get('edit/{id}', [ProductController::class, 'edit']);
+Route::get('edit/{id}', [ProductController::class, 'edit'])->name('edit');
 Route::post('update/{id}', [ProductController::class, 'update'])->name('update');
 Route::get('delete/{id}',[ProductController::class,'destroy']);

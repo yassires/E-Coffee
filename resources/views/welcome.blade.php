@@ -98,13 +98,31 @@
             </div>
             <div class="scroll_icon"></div>
         </div>
+
+        <div class="themenu pt-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="themenu_title_bar_container">
+                            <div class="themenu_stars text-center page_subtitle">E-Coffee</div>
+                            <div class="themenu_rating text-center">
+                                <div class="rating_r rating_r_5"><i></i><i></i><i></i><i></i><i></i></div>
+                            </div>
+                            <div class="themenu_title_bar d-flex flex-column align-items-center justify-content-center">
+                                <div class="themenu_title">The Menu</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>		
+        </div>
         
         <!-- Section-->
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                     @foreach ($data as $dt)
-                    <div class="col mb-5">
+                    <div class="col-lg-4 col-md-6 mb-5">
                         <div class="card">
                             <!-- Product image-->
                             <img class="card-img-top"  height="200" src="images/mocha.jpg" alt="..." />
@@ -132,12 +150,12 @@
                                     
                                 </div>
                             </div>
-                           @endforeach
+                          
                         </div>
                     
 
                     </div>
-                    
+                    @endforeach
                     </div> 
                 </div>
             </div>

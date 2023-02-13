@@ -44,7 +44,7 @@ class ProductController extends Controller
     {
         //
         DB::table('products')->insert([
-            'title' => $request->name,
+            'title' => $request->title,
             'image' =>'aa',
             'description' => $request->description,
             'price' => $request->price,
@@ -97,7 +97,6 @@ class ProductController extends Controller
             'image' =>'aa',
             'description' => $request->description,
             'price' => $request->price,
-            'category_id' => 1
         ]);
 
         return to_route('dashboard')
