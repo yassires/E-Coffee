@@ -125,7 +125,7 @@
                     <div class="col-lg-4 col-md-6 mb-5">
                         <div class="card">
                             <!-- Product image-->
-                            <img class="card-img-top"  height="200" src="images/mocha.jpg" alt="..." />
+                            <img class="card-img-top"  height="200" src="{{ $dt->image }}" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">

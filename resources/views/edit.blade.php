@@ -25,7 +25,7 @@
                             {{ session('success') }}
                         </div>
                     @endif
-                    <form method="POST" action="{{ url('update/'.$data->id)}}">
+                    <form method="POST" action="{{ url('update/'.$data->id)}}" enctype="multipart/form-data">
                         @csrf
                        
                         <input type="hidden" name="id" value="{{$data->id}}">
@@ -43,7 +43,8 @@
                         </div>
                         <div class="mb-3">
                             <label for="file" class="form-label">Image</label>
-                            <input type="file" id="file" class="form-control" >
+                            <input type="file" id="file" name="image" class="form-control" >
+                            <img src="{{asset($data->image)}}" name="old_image" width="200px" alt="">
                         </div>
                         
                         

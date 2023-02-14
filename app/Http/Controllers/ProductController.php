@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateProductRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class ProductController extends Controller
 {
@@ -20,8 +21,12 @@ class ProductController extends Controller
     {
         //
         $data = Product::get();
+        $NumOfUser = User::count();
+        $NumOfCoffee = Product::count();
+
+        
         // return $data;
-        return view('/dashboard', compact('data'));
+        return view('/dashboard', compact('data', 'NumOfUser','NumOfCoffee'));
     }
 
     /**
@@ -43,9 +48,17 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //
+        $plat_image = $request->file('image');
+        $name_gen = hexdec(uniqid());
+        $img_ext = strtolower($plat_image->getClientOriginalExtension());
+        $img_name = $name_gen . '.' . $img_ext;
+        $location = 'images/';
+        $last_img = $location . $img_name;
+        $plat_image->move($location, $img_name);
+
         DB::table('products')->insert([
             'title' => $request->title,
-            'image' =>'aa',
+            'image' => $last_img,
             'description' => $request->description,
             'price' => $request->price,
         ]);
@@ -78,7 +91,7 @@ class ProductController extends Controller
     public function edit($id)
     {
         //
-        $data = Product::where('id','=',$id)->first();
+        $data = Product::where('id', '=', $id)->first();
         return view('edit', compact('data'));
     }
 
@@ -89,12 +102,20 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
         //
-        DB::table('products')->where('id',$id)->update([
+        $plat_image = $request->file('image');
+        $name_gen = hexdec(uniqid());
+        $img_ext = strtolower($plat_image->getClientOriginalExtension());
+        $img_name = $name_gen . '.' . $img_ext;
+        $location = 'images/';
+        $last_img = $location . $img_name;
+        $plat_image->move($location, $img_name);
+
+        DB::table('products')->where('id', $id)->update([
             'title' => $request->name,
-            'image' =>'aa',
+            'image' => $last_img,
             'description' => $request->description,
             'price' => $request->price,
         ]);
@@ -102,8 +123,8 @@ class ProductController extends Controller
         return to_route('dashboard')
             ->with('success', 'Product updated successfully');
     }
-    
-    
+
+
     /**
      * Remove the specified resource from storage.
      *
@@ -117,7 +138,4 @@ class ProductController extends Controller
         return to_route('dashboard')
             ->with('success', 'Product deleted successfully');
     }
-    
-
-    
 }

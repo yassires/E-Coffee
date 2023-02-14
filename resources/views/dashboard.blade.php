@@ -22,7 +22,7 @@
               <div>
                 <div class="text-sm text-gray-400 ">Numbers of users</div>
                 <div class="flex items-center pt-1">
-                  <div class="text-3xl font-medium text-gray-600 ">user count</div>
+                  <div class="text-3xl font-medium text-gray-600 ">{{ $NumOfUser }}</div>
                 </div>
               </div>
               <div class="text-gray-500 text-4xl">
@@ -32,9 +32,9 @@
     
             <div class="flex items-center justify-between p-5 bg-white rounded shadow-sm">
               <div>
-                <div class="text-sm text-gray-400 ">Total Artists</div>
+                <div class="text-sm text-gray-400 ">Total Coffee</div>
                 <div class="flex items-center pt-1">
-                  <div class="text-3xl font-medium text-gray-600 ">coffee count</div>
+                  <div class="text-3xl font-medium text-gray-600 ">{{ $NumOfCoffee }}</div>
                 </div>
               </div>
               <div class="text-gray-500 text-4xl">
@@ -44,7 +44,7 @@
     
             <div class="flex items-center justify-between p-5 bg-white rounded shadow-sm">
               <div>
-                <div class="text-sm text-gray-400 ">Total Songs</div>
+                <div class="text-sm text-gray-400 ">Total Coffees</div>
                 <div class="flex items-center pt-1">
                   <div class="text-3xl font-medium text-gray-600 ">total coffee</div>
                 </div>
@@ -131,7 +131,7 @@
                         <div class="px-6 py-1 lg:px-8">
                           <h3 class="mb-4 text-xl font-medium text-white">Add Product</h3>
                           <div class="model-body">
-                            <form  method="POST" action="{{ route('save') }}">
+                            <form  method="POST" action="{{ route('save') }}"  enctype="multipart/form-data">
                                 @csrf
                                 <div>
                                   <input type="hidden" id="id" name="id" value="">
