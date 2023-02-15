@@ -48,13 +48,13 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //
-        $plat_image = $request->file('image');
+        $c_image = $request->file('image');
         $name_gen = hexdec(uniqid());
-        $img_ext = strtolower($plat_image->getClientOriginalExtension());
+        $img_ext = strtolower($c_image->getClientOriginalExtension());
         $img_name = $name_gen . '.' . $img_ext;
         $location = 'images/';
         $last_img = $location . $img_name;
-        $plat_image->move($location, $img_name);
+        $c_image->move($location, $img_name);
 
         DB::table('products')->insert([
             'title' => $request->title,
@@ -105,13 +105,13 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $plat_image = $request->file('image');
+        $c_image = $request->file('image');
         $name_gen = hexdec(uniqid());
-        $img_ext = strtolower($plat_image->getClientOriginalExtension());
+        $img_ext = strtolower($c_image->getClientOriginalExtension());
         $img_name = $name_gen . '.' . $img_ext;
         $location = 'images/';
         $last_img = $location . $img_name;
-        $plat_image->move($location, $img_name);
+        $c_image->move($location, $img_name);
 
         DB::table('products')->where('id', $id)->update([
             'title' => $request->name,

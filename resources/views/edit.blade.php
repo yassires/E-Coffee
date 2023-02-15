@@ -21,9 +21,11 @@
                 <div class="col-md-12">
                     <p class="text-2xl pb-2">Edit Product</p>
                     @if (session ('success'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('success') }}
+                        <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+                            <span class="font-medium">Success !</span>{{ session('success') }}
+
                         </div>
+                            
                     @endif
                     <form method="POST" action="{{ url('update/'.$data->id)}}" enctype="multipart/form-data">
                         @csrf
